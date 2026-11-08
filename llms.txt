@@ -1,0 +1,17 @@
+# Daemon
+
+> Daemon is a desktop pet for Windows, made by Corner. You hatch one egg on your desktop and raise the little pet
+> inside. He lives on your desktop, walks along your taskbar and keeps you company while you work.
+
+Pet him until his eyes close, dress him in hats, give him a bed, throw him a ball, and send him to sleep over at a
+friend's PC while you peek in. Each egg hatches a different creature, and he learns from the way you live, so no two
+pets end up the same. He never dies and there is nothing to keep alive: no hunger meter, no chores.
+
+- Platform: Windows (Steam). Release date: coming soon. A free demo is on Steam.
+- Developer and publisher: Corner.
+
+## Links
+
+- [Steam page](https://store.steampowered.com/app/5260240/): wishlist, trailers, free demo
+- [Press kit](https://playdaemon.com/press.html): facts, description, pictures
+- Contact: hello@playdaemon.com

@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Daemon: a little desktop pet for Windows</title>
+<meta name="description" content="Daemon is a desktop pet for Windows. Hatch one egg on your desktop and raise the little pet inside: a desktop companion that keeps you company while you work. Free demo on Steam.">
+<link rel="canonical" href="https://playdaemon.com/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Daemon: a little desktop pet for Windows">
+<meta property="og:description" content="Daemon is a desktop pet for Windows. Hatch one egg on your desktop and raise the little pet inside: a desktop companion that keeps you company while you work. Free demo on Steam.">
+<meta property="og:image" content="https://playdaemon.com/media/og.jpg">
+<meta property="og:url" content="https://playdaemon.com/">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" type="image/png" href="media/favicon.png">
+<link rel="preload" href="fonts/Fredoka-600.woff2" as="font" type="font/woff2" crossorigin>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "VideoGame", "name": "Daemon", "alternateName": "DAEMON", "url": "https://playdaemon.com/", "description": "Daemon is a desktop pet for Windows. Hatch one egg on your desktop and raise the little pet inside: a desktop companion that keeps you company while you work. Free demo on Steam.", "image": "https://playdaemon.com/media/og.jpg", "gamePlatform": "PC", "operatingSystem": "Windows", "applicationCategory": "Game", "genre": ["Desktop pet", "Virtual pet", "Cozy"], "author": {"@type": "Organization", "name": "Corner", "email": "hello@playdaemon.com"}, "publisher": {"@type": "Organization", "name": "Corner"}, "sameAs": ["https://store.steampowered.com/app/5260240/"]}</script>
+<style>
+@font-face{font-family:Fredoka;font-weight:500;font-display:swap;src:url(fonts/Fredoka-500.woff2) format("woff2")}
+@font-face{font-family:Fredoka;font-weight:600;font-display:swap;src:url(fonts/Fredoka-600.woff2) format("woff2")}
+@font-face{font-family:Nunito;font-weight:600;font-display:swap;src:url(fonts/Nunito-600.woff2) format("woff2")}
+@font-face{font-family:Nunito;font-weight:700;font-display:swap;src:url(fonts/Nunito-700.woff2) format("woff2")}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:Nunito,system-ui,sans-serif;font-weight:600;-webkit-font-smoothing:antialiased}
+h1,h2,h3,.f{font-family:Fredoka,system-ui,sans-serif;font-weight:600}
+img,video{display:block;max-width:100%}
+a{color:inherit}
+.steam{display:inline-flex;align-items:center;gap:12px;font-family:Fredoka,sans-serif;font-weight:600;text-decoration:none;
+ border-radius:999px;white-space:nowrap}
+.steam svg{width:1.25em;height:1.25em;flex:none}
+.widget{border:0;width:646px;max-width:100%;height:190px;display:block;margin:0 auto}
+:root{--bg:#fbf6ef;--ink:#33283a;--soft:#6f6475;--btn:#171a21;--btnink:#fff}
+html{font-size:clamp(16px,.75vw,24px)}
+@media(min-width:2200px){.widget{zoom:1.2}}
+body{background:var(--bg);color:var(--ink)}
+.hero{position:relative;height:90vh;height:90svh;min-height:37.5rem;overflow:hidden;color:#fff;
+ background:#1d1611 url(media/den-1920.jpg) 64% 66%/cover no-repeat}
+@media(min-aspect-ratio:16/9){.hero{background-size:122% auto}}
+.hero:before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(24,16,10,.8) 0%,rgba(24,16,10,.5) 28%,rgba(24,16,10,0) 50%)}
+.copy{position:absolute;left:7vw;top:50%;transform:translateY(-50%);max-width:32.5rem}
+.copy h1{font-weight:500;font-size:6.5rem;letter-spacing:.125rem;line-height:1;margin-bottom:1.375rem;text-shadow:0 .125rem 1.25rem #0005}
+.copy p{font-size:1.5rem;line-height:1.45;color:#f3ebe2;margin-bottom:2.25rem;text-shadow:0 1px .625rem #0006}
+.hero .steam{background:#fff;color:#171a21;font-size:1.5rem;padding:1.0625rem 2rem 1.0625rem 1.5rem}
+.small{margin-top:1.5rem;font-family:Fredoka,sans-serif;font-weight:500;font-size:1.125rem;letter-spacing:1px}
+.small a{color:#fff;opacity:.85;text-decoration:none;margin-right:1.625rem}
+.small a:hover{opacity:1;text-decoration:underline}
+.bar{position:fixed;top:0;left:0;right:0;z-index:5;display:flex;align-items:center;justify-content:space-between;
+ padding:.75rem 4vw;background:rgba(251,246,239,.94);backdrop-filter:blur(.5rem);box-shadow:0 1px 0 #0000000f;
+ transform:translateY(-100%);transition:transform .25s ease}
+.bar.on{transform:none}
+.bar .name{font-family:Fredoka,sans-serif;font-weight:600;font-size:1.625rem;text-decoration:none}
+.bar .steam{background:#171a21;color:#fff;font-size:1rem;padding:.625rem 1.125rem .625rem .875rem}
+.story{max-width:71.25rem;margin:0 auto;padding:0 1.5rem}
+.beat{padding-top:6rem}
+.beat h2{font-weight:600;font-size:2.875rem;line-height:1.15;text-align:center;margin:0 auto .625rem;max-width:51.25rem}
+.beat p{font-size:1.3125rem;line-height:1.5;text-align:center;color:var(--soft);max-width:40rem;margin:0 auto 1.875rem}
+.beat video{display:block;width:100%;aspect-ratio:var(--a);object-fit:cover;border-radius:1.75rem;background:#e6ddd2}
+.cta{text-align:center;margin-top:2.125rem}
+.cta .steam,.end .steam{background:#171a21;color:#fff;font-size:1.375rem;padding:.9375rem 1.875rem .9375rem 1.375rem;box-shadow:0 .375rem 0 #000}
+.end{text-align:center;padding:6.875rem 1.25rem 1.875rem}
+.end img{height:6rem;width:auto;margin:0 auto 1.125rem}
+.end h2{font-size:3.25rem;margin-bottom:1.875rem}
+.end .steam{font-size:1.5rem;padding:1.0625rem 2rem 1.0625rem 1.5rem}
+.end .demo{display:block;margin:1.375rem 0 3.125rem;font-family:Fredoka,sans-serif;font-weight:500;font-size:1.1875rem;text-underline-offset:.3125rem}
+.what{max-width:43.75rem;margin:0 auto;padding:5rem 1.5rem 1.875rem;text-align:center}
+.what h2{font-size:1.625rem;margin-bottom:.625rem}
+.what p{font-size:1.125rem;line-height:1.6;color:var(--soft)}
+footer{text-align:center;padding:1.875rem 1.25rem 3.125rem;font-size:1rem;color:var(--soft)}
+footer a{text-decoration:none}footer a:hover{text-decoration:underline}
+@media(max-width:700px){
+ html{font-size:16px}
+ .hero{min-height:0;height:auto;padding-top:60vh;background:#1d1611 url(media/den-1920.jpg) 63% -10vh/auto 80vh no-repeat}
+ .hero:before{background:linear-gradient(0deg,#1d1611 0%,#1d1611 30%,rgba(29,22,17,0) 46%)}
+ .copy{position:relative;left:auto;top:auto;transform:none;padding:0 24px 56px}
+ .copy h1{font-size:64px;margin-bottom:16px}.copy p{font-size:19px;margin-bottom:26px}
+ .hero .steam{display:flex;justify-content:center;font-size:21px}
+ .small{font-size:16px}.small a{margin-right:20px}
+ .bar{padding:10px 16px}.bar .name{font-size:22px}
+ .story{padding:0 16px}
+ .beat{padding-top:64px}.beat h2{font-size:30px}.beat p{font-size:18px;margin-bottom:20px}
+ .beat video{border-radius:16px}
+ .cta .steam{font-size:20px}
+ .end{padding-top:80px}.end h2{font-size:36px}.end .steam{font-size:21px}
+}
+
+</style>
+</head>
+<body>
+<div class="bar" id="bar"><a class="name" href="./">Daemon</a><a class="steam" href="https://store.steampowered.com/app/5260240/"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M11.98 0C5.67 0 .51 4.87.02 11.05l6.44 2.66a3.38 3.38 0 0 1 1.91-.59h.19l2.87-4.15v-.06a4.54 4.54 0 1 1 4.54 4.54h-.1l-4.08 2.92v.16a3.4 3.4 0 0 1-6.74.67L.44 15.14A12 12 0 1 0 11.98 0zM7.54 18.21l-1.47-.61a2.55 2.55 0 1 0 1.48-3.35l1.52.63a1.88 1.88 0 1 1-1.45 3.47l-.08-.14zm11.42-9.3a3.03 3.03 0 1 0-3.03 3.03 3.03 3.03 0 0 0 3.03-3.03zm-5.3 0a2.28 2.28 0 1 1 2.27 2.28 2.27 2.27 0 0 1-2.27-2.28z"/></svg>Wishlist on Steam</a></div>
+<header class="hero" id="top">
+ <div class="copy">
+  <h1>Daemon</h1>
+  <p>Daemon is a small cozy desktop pet you hatch from a tiny egg, dress in silly hats and send on sleepovers to your friends' PCs.</p>
+  <a class="steam" href="https://store.steampowered.com/app/5260240/"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M11.98 0C5.67 0 .51 4.87.02 11.05l6.44 2.66a3.38 3.38 0 0 1 1.91-.59h.19l2.87-4.15v-.06a4.54 4.54 0 1 1 4.54 4.54h-.1l-4.08 2.92v.16a3.4 3.4 0 0 1-6.74.67L.44 15.14A12 12 0 1 0 11.98 0zM7.54 18.21l-1.47-.61a2.55 2.55 0 1 0 1.48-3.35l1.52.63a1.88 1.88 0 1 1-1.45 3.47l-.08-.14zm11.42-9.3a3.03 3.03 0 1 0-3.03 3.03 3.03 3.03 0 0 0 3.03-3.03zm-5.3 0a2.28 2.28 0 1 1 2.27 2.28 2.27 2.27 0 0 1-2.27-2.28z"/></svg>Wishlist on Steam</a>
+  <nav class="small"><a href="https://store.steampowered.com/app/5468160/">Free demo</a><a href="press.html">Press kit</a><a href="mailto:hello@playdaemon.com">Contact</a></nav>
+ </div>
+</header>
+<main class="story">
+<section class="beat"><h2>Send him to sleep over at a friend's</h2><p>He plays with their pet for the night. You can still watch from your own desk.</p><video style="--a:16/9" src="media/visit.mp4" poster="media/visit.jpg" autoplay muted loop playsinline preload="metadata" aria-label="Two little pets visiting each other on two desktops"></video><div class="cta"><a class="steam" href="https://store.steampowered.com/app/5260240/"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M11.98 0C5.67 0 .51 4.87.02 11.05l6.44 2.66a3.38 3.38 0 0 1 1.91-.59h.19l2.87-4.15v-.06a4.54 4.54 0 1 1 4.54 4.54h-.1l-4.08 2.92v.16a3.4 3.4 0 0 1-6.74.67L.44 15.14A12 12 0 1 0 11.98 0zM7.54 18.21l-1.47-.61a2.55 2.55 0 1 0 1.48-3.35l1.52.63a1.88 1.88 0 1 1-1.45 3.47l-.08-.14zm11.42-9.3a3.03 3.03 0 1 0-3.03 3.03 3.03 3.03 0 0 0 3.03-3.03zm-5.3 0a2.28 2.28 0 1 1 2.27 2.28 2.27 2.27 0 0 1-2.27-2.28z"/></svg>Wishlist on Steam</a></div></section>
+<section class="beat"><h2>Throw him the ball</h2><p>He gets better at it the more you play.</p><video style="--a:2/1" src="media/ball.mp4" poster="media/ball.jpg" autoplay muted loop playsinline preload="metadata" aria-label="Daemon chasing a football along the taskbar"></video></section>
+<section class="beat"><h2>Dress him up in his own room</h2><p>Try on hats, beds and toys in his Den. Whatever you pick, he wears on your desktop too.</p><video style="--a:2/1" src="media/den.mp4" poster="media/den.jpg" autoplay muted loop playsinline preload="metadata" aria-label="Daemon trying on hats in his room"></video></section>
+<section class="beat"><h2>His favourite part of the day</h2><p>Pet him and watch his eyes close. You will probably do it more than you meant to.</p><video style="--a:2/1" src="media/petting.mp4" poster="media/petting.jpg" autoplay muted loop playsinline preload="metadata" aria-label="Daemon closing his eyes while he is petted, on four desktops"></video></section>
+<section class="beat"><h2>Nobody else's will end up like yours</h2><p>Each egg hatches a different creature. No one knows what yours will end up like.</p>
+<video style="--a:16/9" src="media/grid.mp4" poster="media/grid.jpg" autoplay muted loop playsinline preload="metadata" aria-label="Many different little pets, each on its own desktop"></video></section>
+</main>
+<section class="end" id="egg"><img src="media/icons/egg-render.png" alt=""><h2>He's waiting in his egg.</h2><a class="steam" href="https://store.steampowered.com/app/5260240/"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M11.98 0C5.67 0 .51 4.87.02 11.05l6.44 2.66a3.38 3.38 0 0 1 1.91-.59h.19l2.87-4.15v-.06a4.54 4.54 0 1 1 4.54 4.54h-.1l-4.08 2.92v.16a3.4 3.4 0 0 1-6.74.67L.44 15.14A12 12 0 1 0 11.98 0zM7.54 18.21l-1.47-.61a2.55 2.55 0 1 0 1.48-3.35l1.52.63a1.88 1.88 0 1 1-1.45 3.47l-.08-.14zm11.42-9.3a3.03 3.03 0 1 0-3.03 3.03 3.03 3.03 0 0 0 3.03-3.03zm-5.3 0a2.28 2.28 0 1 1 2.27 2.28 2.27 2.27 0 0 1-2.27-2.28z"/></svg>Wishlist on Steam</a>
+ <a class="demo" href="https://store.steampowered.com/app/5468160/">Play the free demo</a>
+ <iframe class="widget" src="https://store.steampowered.com/widget/5260240/" title="Daemon on Steam"></iframe></section>
+<section class="what"><h2>What is Daemon?</h2><p>Daemon is a desktop pet for Windows. He lives on your desktop, walks along your taskbar and keeps you company while you work. Pet him until his eyes close, dress him in hats, give him a bed, and send him to sleep over at a friend's PC while you peek in.</p></section>
+<footer><a href="https://store.steampowered.com/app/5260240/">Steam</a> · <a href="https://store.steampowered.com/app/5468160/">Free demo</a> · <a href="press.html">Press kit</a> · <a href="mailto:hello@playdaemon.com">hello@playdaemon.com</a><br><br>Made by Corner</footer>
+<script>new IntersectionObserver(e=>document.getElementById('bar').classList.toggle('on',!e[0].isIntersecting)).observe(document.getElementById('top'))</script>
+</body></html>
